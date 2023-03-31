@@ -28,7 +28,8 @@
     
     
 Примеры:
-var a = 1;
-var b = 2;
-var out = a + b;
-ВЫВОД(1 + out);
+
+    var a = 1;
+    var b = 2;
+    var out = a + b;
+    ВЫВОД(1 + out);
