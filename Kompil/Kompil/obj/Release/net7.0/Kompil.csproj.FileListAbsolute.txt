@@ -1,0 +1,15 @@
+C:\Users\Александр\source\repos\Kompil\Kompil\bin\Release\net7.0\Kompil.exe
+C:\Users\Александр\source\repos\Kompil\Kompil\bin\Release\net7.0\Kompil.deps.json
+C:\Users\Александр\source\repos\Kompil\Kompil\bin\Release\net7.0\Kompil.runtimeconfig.json
+C:\Users\Александр\source\repos\Kompil\Kompil\bin\Release\net7.0\Kompil.dll
+C:\Users\Александр\source\repos\Kompil\Kompil\bin\Release\net7.0\Kompil.pdb
+C:\Users\Александр\source\repos\Kompil\Kompil\obj\Release\net7.0\Kompil.csproj.AssemblyReference.cache
+C:\Users\Александр\source\repos\Kompil\Kompil\obj\Release\net7.0\Kompil.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Александр\source\repos\Kompil\Kompil\obj\Release\net7.0\Kompil.AssemblyInfoInputs.cache
+C:\Users\Александр\source\repos\Kompil\Kompil\obj\Release\net7.0\Kompil.AssemblyInfo.cs
+C:\Users\Александр\source\repos\Kompil\Kompil\obj\Release\net7.0\Kompil.csproj.CoreCompileInputs.cache
+C:\Users\Александр\source\repos\Kompil\Kompil\obj\Release\net7.0\Kompil.dll
+C:\Users\Александр\source\repos\Kompil\Kompil\obj\Release\net7.0\refint\Kompil.dll
+C:\Users\Александр\source\repos\Kompil\Kompil\obj\Release\net7.0\Kompil.pdb
+C:\Users\Александр\source\repos\Kompil\Kompil\obj\Release\net7.0\Kompil.genruntimeconfig.cache
+C:\Users\Александр\source\repos\Kompil\Kompil\obj\Release\net7.0\ref\Kompil.dll
