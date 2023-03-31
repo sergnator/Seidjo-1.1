@@ -24,15 +24,19 @@ namespace Kompil
 
         public static Dictionary<string, TokenType>.ValueCollection tokenTypes => TokenTypes.Values;
         public static Dictionary<string, TokenType> TokenTypes = new Dictionary<string, TokenType>() {
-            {"VAR", new TokenType("VAR", @"([a-z]|[A-Z])+") },
+            {"VAR", new TokenType("VAR", @"var") },
             {"SPACE", new TokenType("SPACE", @"[ /t/n/r]") },
             {"PLUS", new TokenType("PLUS", @"[+]") },
             {"END", new TokenType("END", @";") },
             {"PRINT", new TokenType("PRINT", @"ВЫВОД") }, 
-            {"NUM", new TokenType("NUM", @"[1-9]+") },
+            {"NUM", new TokenType("NUM", @"(-|)[1-9]+") },
             {"EQ", new TokenType("EQ", @"=") },
-            {"MINUS", new TokenType("MINUS", @"[-]") }
+            {"MINUS", new TokenType("MINUS", @"[-]") },
+            {"NAMEVAR", new TokenType("NAMEVAR", @"([a-z]|[A-Z])+") },
+            {"LEFTSKOB", new TokenType("LEFTSKOB", @"[(]") },
+            {"RIGHTSKOB", new TokenType("RIGHTSKOB", @"[)]") }
 
+            
 
         };
         

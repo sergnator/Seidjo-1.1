@@ -121,9 +121,13 @@ namespace Kompil
             if (math(TokenType.TokenTypes["VAR"]) == null)
             {
                 ExpressionNode printNode = parsePrint();
-                return printNode;
+                if (math(TokenType.TokenTypes["RIGHTSKOB"]) != null)
+                {
+                    return printNode;
+                }
+                throw new Exception("не закрытая скобка после функции ВЫВОД");
             }
-            pos--;
+            
             ExpressionNode varnode = parseVarOrNum();
             Token ass = math(TokenType.TokenTypes["EQ"]);
             if (ass != null)
@@ -135,13 +139,25 @@ namespace Kompil
             throw new Exception("нет оператора присвоения");
 
         }
+        public ExpressionNode parseNameVar()
+        {
+            Token name = math(TokenType.TokenTypes["NAMEVAR"]);
+            if(name != null)
+            {
 
+            }
+            throw new Exception("нет название переменной" + pos);
+        }
         public ExpressionNode parsePrint()
         {
             Token operatorLog = math(TokenType.TokenTypes["PRINT"]);
             if(operatorLog != null)
             {
-                return new UnarOperationNode(operatorLog, parseFormula());
+                Token Skobkaleft = math(TokenType.TokenTypes["LEFTSKOB"]);
+                if (Skobkaleft != null)
+                {
+                    return new UnarOperationNode(operatorLog, parseFormula());
+                }
 
             }
             throw new Exception("неверный синтаксис");
@@ -160,6 +176,10 @@ namespace Kompil
                 ExpressionNode rightNode = parseVarOrNum();
                 leftNode = new BinOperatorNode(Operator, leftNode, rightNode);
                 Operator = math(TokenType.TokenTypes["PLUS"]);
+                if (Operator == null)
+                {
+                    Operator = math(TokenType.TokenTypes["MINUS"]);
+                }
 
             }
             return leftNode;
@@ -172,7 +192,7 @@ namespace Kompil
             {
                 return new NumderNode(num);
             }
-            Token var = math(TokenType.TokenTypes["VAR"]);
+            Token var = math(TokenType.TokenTypes["NAMEVAR"]);
             if(var != null)
             {
                 return new VarNode(var);
