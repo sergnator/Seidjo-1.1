@@ -18,6 +18,10 @@ namespace Kompil
 
         public dynamic? run(ExpressionNode node)
         {
+            if(node is InputFunc )
+            {
+                return Console.ReadLine();
+            }
             if (node is NumderNode)
             {
                 return Convert.ToInt32(node.number.Text);
@@ -116,11 +120,36 @@ namespace Kompil
             }
             return root;
         }
+        public ExpressionNode parseInput()
+        {
+            Token operatInput = math(TokenType.TokenTypes["INPUT"]);
+            if(operatInput != null)
+            {
+                return new InputFunc();
+            }
+            throw new Exception("неверный синтаксис");
+        }
         public ExpressionNode parseExpression()
         {
             if (math(TokenType.TokenTypes["VAR"]) == null)
             {
-                ExpressionNode printNode = parsePrint();
+                ExpressionNode printNode = new ExpressionNode();
+
+                try
+                {
+                    printNode = parsePrint();
+                }
+                catch  { }
+                try
+                {
+                    printNode = parseInput();
+                }
+                catch { }
+                try
+                {
+                    printNode = ParseParseInt();
+                }
+                catch { }
                 if (math(TokenType.TokenTypes["RIGHTSKOB"]) != null)
                 {
                     return printNode;
@@ -132,12 +161,46 @@ namespace Kompil
             Token ass = math(TokenType.TokenTypes["EQ"]);
             if (ass != null)
             {
+                if (math(TokenType.TokenTypes["CONVERTTOINT"]) != null)
+                {
+                    
+                    BinOperatorNode bin = new BinOperatorNode(ass, varnode, ParseParseInt());
+                    return bin;
+                }
+                if (math(TokenType.TokenTypes["INPUT"]) != null)
+                {
+                    pos--;
+                    BinOperatorNode bin = new BinOperatorNode(ass, varnode, parseInput());
+                    return bin;
+                }
                 ExpressionNode right = parseFormula();
                 BinOperatorNode binaryNode = new BinOperatorNode(ass, varnode, right);
                 return binaryNode;
             }
             throw new Exception("нет оператора присвоения");
 
+        }
+        public ExpressionNode ParseParseInt()
+        {
+            pos--;//проблема в том, что после всех проверок ParseInput() возращает ошибку проблема в pos наверное
+            Token ParseInt = math(TokenType.TokenTypes["CONVERTTOINT"]);
+            if(ParseInt != null)
+            {
+                Token Skobkaleft = math(TokenType.TokenTypes["LEFTSKOB"]);
+                if (Skobkaleft != null)
+                {
+                    Token Input = math(TokenType.TokenTypes["INPUT"]);
+                    if(Input != null)
+                    {
+                        if (math(TokenType.TokenTypes["RIGHTSKOB"]) != null)
+                        {
+                            pos--;
+                            return new UnarOperationNode(ParseInt, parseInput());
+                        }
+                    }
+                }
+            }
+            throw new Exception("неверный синтаксис");
         }
         public ExpressionNode parseNameVar()
         {

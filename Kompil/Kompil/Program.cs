@@ -1,8 +1,6 @@
 ﻿using Kompil;
-using System.IO;
-using System.Runtime.CompilerServices;
-try
-{
+
+
     string code = "";
     string line;
     string name_file = Console.ReadLine();
@@ -19,7 +17,10 @@ try
 
     Leksor Leksor = new Leksor(code);
     Leksor.lexAnalytic();
-
+    foreach(var i in Leksor.tokens)
+{
+    Console.WriteLine(i);
+}
     Parser parser = new Parser(Leksor.tokens);
 
     var root = parser.parseCode();
@@ -27,6 +28,5 @@ try
     parser.run(root);
 
     
-}
-catch (Exception ex) { Console.WriteLine(ex.Message); }
+
 Console.ReadKey();

@@ -34,9 +34,12 @@ namespace Kompil
             {"MINUS", new TokenType("MINUS", @"[-]") },
             {"NAMEVAR", new TokenType("NAMEVAR", @"([a-z]|[A-Z])+") },
             {"LEFTSKOB", new TokenType("LEFTSKOB", @"[(]") },
-            {"RIGHTSKOB", new TokenType("RIGHTSKOB", @"[)]") }
+            {"RIGHTSKOB", new TokenType("RIGHTSKOB", @"[)]") },
+            {"INPUT", new TokenType("INPUT", @"ВВОД") },
+            {"CONVERTTOINT", new TokenType("CONVERTTOINT", @"Конвертировать") }
 
-            
+
+
 
         };
         
